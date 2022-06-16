@@ -4,9 +4,11 @@ import WordleRow from '../components/WordleRow'
 
 const WordlePage = () => {
 
-    const [wordList, getWordList] = useState(null)
+    const [wordList, getWordList] = useState([])
     const [word, createWord] = useState('Alexa')
-    const [guesses, newGuess] = useState(Array(6).fill(null))
+    const [guesses, setGuesses] = useState(Array(6).fill(''))
+    const [curGuess, setCurGuess] = useState(null)
+    const [guessNum, setGuessNum] = useState(0)
 
   // useEffect(()=> {
   //   async function fetchAPI() {
@@ -21,24 +23,30 @@ const WordlePage = () => {
   //   }
   //   fetchAPI() 
   // }, [])
+    async function currentGuess(e) {
+        await setCurGuess(e.target.value)
+    }
 
-//   function getWord() {
-
-//     console.log('here')
-//     let i = Math.floor(getWordList.length * Math.random())
-
-//     createWord(wordList[i])
-//   }
+    async function submitGuess() {
+        if (curGuess !== '') {
+            await setGuesses(guesses => guesses[guessNum] = curGuess)
+            await setGuessNum(guessNum + 1)
+        }
+    }
 
     return (
         <div>
             {
-                guesses.map(guess => {
+                guesses.map((guess, index) => {
                     return (
-                        <WordleRow guess={ guess }/>
+                        <div key={index} >
+                            <WordleRow guess={ guess } />
+                        </div>
                     );
                 })
             }
+            <input type='text' onChange={currentGuess} />
+            <button onClick={submitGuess}>CLICK ME</button>
         </div>
     )
 }

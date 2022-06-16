@@ -1,9 +1,9 @@
 import React from 'react'
 
-const WordleSquare = ({ guessChar }) => {
+const WordleSquare = ({ guessChar, index }) => {
   return (
-    <div className='wordle-square'>
-        { guessChar }
+    <div key={ index } className='wordle-square'>
+        <span>{ guessChar }</span>
     </div>
   )
 }
