@@ -8,11 +8,12 @@ const WordlePage = () => {
     const [guesses, setGuesses] = useState(Array(6).fill(''))
     const [curGuess, setCurGuess] = useState('')
     const [guessNum, setGuessNum] = useState(0)
+    const [started, setStarted] = useState(false)
 
     useEffect(()=>{
         const handleKeyDown = (event) => {
             const { key, keyCode } = event
-            if ((keyCode >= 65 && keyCode <= 90) && (curGuess.length <= 5)) {
+            if ((keyCode >= 65 && keyCode <= 90) && (curGuess.length < 5)) {
                 setCurGuess(curGuess.concat(key.toUpperCase()))
             } else {
                 setGuessNum(guessNum + 1)
@@ -23,16 +24,20 @@ const WordlePage = () => {
         return () => window.removeEventListener('keydown', handleKeyDown)
     })
 
-    // useEffect(()=>{
-    //     setGuesses((guesses)=> {
-    //         guesses[guessNum] = curGuess
+    useEffect(()=>{
+        if (!started) {
+            setStarted(true)
+        } else {
+            setGuesses(guesses => {
+                return [
+                    ...guesses.slice(0, guessNum),
+                    guesses[guessNum] = curGuess,
+                    ...guesses.slice(guessNum + 1),
+                ]
+            })
+        }
+    }, [curGuess, guessNum, guesses, started])
 
-    //     }
-    // }, [curGuess])
-
-
-    // useEffect(()=>
-    
     return (
         <div>
             {
