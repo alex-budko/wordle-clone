@@ -1,7 +1,7 @@
 import React from 'react'
 import WordleSquare from './WordleSquare'
 
-const WordleRow = ( {guess} ) => {
+const WordleRow = ( {guess, colors} ) => {
     let guessChars = ['', '', '', '', '']
 
     if (guess !== null) {
@@ -18,7 +18,7 @@ const WordleRow = ( {guess} ) => {
                 guessChars.map((guessChar, index) => {
                     return (
                         <div key={index}>
-                            <WordleSquare index = {index} guessChar={ guessChar }/>
+                            <WordleSquare color={ colors[index] } index={ index } guessChar={ guessChar }/>
                         </div>
                     );
                 })

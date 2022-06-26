@@ -1,8 +1,8 @@
 import React from 'react'
 
-const WordleSquare = ({ guessChar, index }) => {
+const WordleSquare = ({ guessChar, index, color }) => {
   return (
-    <div key={ index } className='wordle-square'>
+    <div style={{backgroundColor: color}} key={ index } className='wordle-square'>
         <span>{ guessChar }</span>
     </div>
   )
