@@ -4,7 +4,6 @@
   width: 50px;
   height: 50px;
   margin: 5px;
-  
 }
 
 .wordle-square > span {
@@ -23,4 +22,8 @@
   grid-gap: 5px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.square-change {
+  background-color: black;
 }
