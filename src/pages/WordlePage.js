@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { WordleWords } from '../components/data/WordleWords'
+import { WordleWordsUpper } from '../components/data/WordleWords'
 import WordleRow from '../components/WordleRow'
 
 const WordlePage = () => {
@@ -51,7 +51,7 @@ const WordlePage = () => {
                     //if 'ENTER' is pressed
                 } else if (keyCode === 13 && curGuess.length === 5 && guesses.length) {
                     //check winning conditions
-                    if (WordleWords.includes(curGuess)) {
+                    if (WordleWordsUpper.includes(curGuess)) {
                         //won
                         if (word === curGuess) {
                             setEnded(true)
@@ -71,8 +71,8 @@ const WordlePage = () => {
 
     useEffect(()=>{
         if (!started) {
-            let n = Math.floor(Math.random() * WordleWords.length + 1)
-            createWord(WordleWords[n])
+            let n = Math.floor(Math.random() * WordleWordsUpper.length + 1)
+            createWord(WordleWordsUpper[n])
             setStarted(true)
         } else {
             setGuesses(guesses => {

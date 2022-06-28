@@ -9,7 +9,6 @@ const WordleRow = ( {guess, colors} ) => {
             guessChars[i] = guess[i]
         }
     } 
-    
 
     return (
         <div className='wordle-row'>
@@ -18,7 +17,7 @@ const WordleRow = ( {guess, colors} ) => {
                 guessChars.map((guessChar, index) => {
                     return (
                         <div key={index}>
-                            <WordleSquare color={ colors[index] } index={ index } timer={index + 0.15} guessChar={ guessChar }/>
+                            <WordleSquare color={ colors[index] } index={ index } timer={index * 0.45} guessChar={ guessChar }/>
                         </div>
                     );
                 })
