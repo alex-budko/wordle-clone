@@ -11,7 +11,6 @@ const WordleSquare = ({ guessChar, index, color, timer}) => {
         <span>
           { guessChar }
         </span>
-
       </div>
   )
 }

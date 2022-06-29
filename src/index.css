@@ -3,16 +3,16 @@
   border-radius: 5px;
   width: 50px;
   height: 50px;
+  text-align:center;
   margin: 5px;
 }
 
 .wordle-square > span {
   font-family: sans-serif;
+  display: inline-block;
   font-size: 20px;
   font-weight: 600;
-  position: relative;
-  top: 28.5%;
-  left: 36.5%;
+  margin-top: 15px;
 }
 
 .wordle-row {

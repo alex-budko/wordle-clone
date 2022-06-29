@@ -13,11 +13,6 @@ const WordlePage = () => {
     const [started, setStarted] = useState(false)
     const [ended, setEnded] = useState(false)
 
-    //game restart
-    function restart() {
-        setStarted(false)
-    }
-
     function changeColors() {
         for (let i = 0; i < 5; i++) {
             if (curGuess && curGuess[i] === word[i]) {
@@ -38,6 +33,7 @@ const WordlePage = () => {
         setCurGuess(curGuess => (guessNum === 5 || word === curGuess) ? curGuess : '')
     }
 
+    //playing useEffect
     useEffect(()=>{
         if (!ended) {
             const handleKeyDown = (event) => {
@@ -68,18 +64,16 @@ const WordlePage = () => {
             return () => window.removeEventListener('keydown', handleKeyDown)
         }
     })
-    
-    useEffect(()=>{
 
+
+    //initial + updating useEffect
+    useEffect(()=>{
         if (!started) {
-            //game start on init or after `restart`
             let n = Math.floor(Math.random() * WordleWordsUpper.length + 1)
             createWord(WordleWordsUpper[n])
-            setGuesses(Array(6).fill(''))
-            setStarted(false)
-            setEnded(false)
+
+            setStarted(true)
         } else {
-            //if game is ongoing
             setGuesses(guesses => {
                 return [
                     ...guesses.slice(0, guessNum),
@@ -101,6 +95,7 @@ const WordlePage = () => {
                     );
                 })
             }
+            
         </div>
     )
 }
