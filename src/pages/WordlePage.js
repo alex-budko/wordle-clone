@@ -13,8 +13,9 @@ const WordlePage = () => {
     const [started, setStarted] = useState(false)
     const [ended, setEnded] = useState(false)
 
+    //game restart
     function restart() {
-        console.log('restart')
+        setStarted(false)
     }
 
     function changeColors() {
@@ -34,7 +35,6 @@ const WordlePage = () => {
                 ))
             }
         }
-        console.log(word)
         setCurGuess(curGuess => (guessNum === 5 || word === curGuess) ? curGuess : '')
     }
 
@@ -68,13 +68,18 @@ const WordlePage = () => {
             return () => window.removeEventListener('keydown', handleKeyDown)
         }
     })
-
+    
     useEffect(()=>{
+
         if (!started) {
+            //game start on init or after `restart`
             let n = Math.floor(Math.random() * WordleWordsUpper.length + 1)
             createWord(WordleWordsUpper[n])
-            setStarted(true)
+            setGuesses(Array(6).fill(''))
+            setStarted(false)
+            setEnded(false)
         } else {
+            //if game is ongoing
             setGuesses(guesses => {
                 return [
                     ...guesses.slice(0, guessNum),
