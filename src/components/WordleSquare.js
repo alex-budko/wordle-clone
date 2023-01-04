@@ -4,7 +4,7 @@ const WordleSquare = ({ guessChar, index, color, timer}) => {
     
   return (
       <div 
-        style={{backgroundColor: color, transition: `background-color 0.35s`, transitionDelay: `${timer}s`, transitionTimingFunction: 'ease-out'}}
+        style={{backgroundColor: color, transition: `background-color 0.40s`, transitionDelay: `${timer}s`, transitionTimingFunction: 'ease-out'}}
         key={ index } 
         className='wordle-square'>
           

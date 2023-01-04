@@ -74,6 +74,7 @@ const WordlePage = () => {
 
             setStarted(true)
         } else {
+            console.log(word)
             setGuesses(guesses => {
                 return [
                     ...guesses.slice(0, guessNum),

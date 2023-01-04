@@ -3195,6 +3195,7 @@ let WordleWords = [
     "metes",
     "cuter",
     "maims",
+    "soups",
     "droll",
     "cupid",
     "mauls",
